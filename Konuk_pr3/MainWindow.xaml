@@ -1,0 +1,20 @@
+﻿<Window x:Class="Konuk_pr3.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Konuk_pr3"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800" Icon="/Resources/icon.jpg">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Background="Pink">
+            <Image Width="45" Height="45" HorizontalAlignment="Left" Margin="5" Source="/Resources/Icon.jpg"/>
+            <Button x:Name="btnBack" HorizontalAlignment="Right" Content="Назад" Click="btnBack_Click" Background="#FFE66CB4"/>
+        </Grid>
+        <Frame x:Name="FraMain" Grid.Row="1" NavigationUIVisibility="Hidden" ContentRendered="FraMain_ContentRendered"/>
+    </Grid>
+</Window>
