@@ -24,7 +24,33 @@ namespace Konuk_pr3.Pages
         public Agent(string userFIO)
         {
             InitializeComponent();
-            tbFIO.Text = userFIO;
+            TimeLock(); //Вызываем метод
+            tbFIO.Text = userFIO; 
+        }
+        /// <summary>
+        /// В этом методе реализуем проверку времени и блокировку системы в определенный период времени
+        /// </summary>
+        /// <returns></returns>
+        public string TimeLock()
+        {
+            DateTime timeNow = DateTime.Now;
+            if (timeNow.Hour >= 10 && timeNow.Hour <= 12)
+            {
+                return tbTime.Text = "Доброе утро";
+            }
+            else if (timeNow.Hour > 11 && timeNow.Minute >= 1 && timeNow.Hour <= 17)
+            {
+                return tbTime.Text = "Добрый день";
+            }
+            else if (timeNow.Hour > 16 && timeNow.Minute >= 1 && timeNow.Hour <= 19)
+            {
+                return tbTime.Text = "Добрый вечер";
+            }
+            else
+            {
+                tbFIO.Visibility = Visibility.Collapsed;
+                return tbTime.Text = "Доступ заблокирован! Зайдите позже!";
+            }
         }
     }
 }

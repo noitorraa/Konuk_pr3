@@ -24,12 +24,17 @@ namespace Konuk_pr3
         public MainWindow()
         {
             InitializeComponent();
-            FraMain.Navigate(new Autho());
+            FraMain.Navigate(new Autho()); //Осуществляем переход на основную страницу
         }
         private void btnBack_Click(object sender, RoutedEventArgs e)
         {
-            FraMain.GoBack();
+            FraMain.GoBack(); //Кнопка для возвращения на предыдущий экран
         }
+        /// <summary>
+        /// Этот метод не позволяет вернуться на предыдущую странницу, если это начальная страница
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void FraMain_ContentRendered(object sender, EventArgs e)
         {
             if (FraMain.CanGoBack) { btnBack.Visibility = Visibility.Visible; }

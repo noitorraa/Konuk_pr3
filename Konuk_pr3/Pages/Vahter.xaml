@@ -9,6 +9,7 @@
       Title="Vahter">
 
     <Grid>
-        
+        <TextBlock x:Name="tbFIO" HorizontalAlignment="Left" Margin="374,97,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
+        <TextBlock x:Name="tbTime" HorizontalAlignment="Left" Margin="374,61,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
     </Grid>
 </Page>

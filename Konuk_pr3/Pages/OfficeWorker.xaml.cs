@@ -20,9 +20,32 @@ namespace Konuk_pr3.Pages
     /// </summary>
     public partial class OfficeWorker : Page
     {
-        public OfficeWorker()
+        public OfficeWorker(string userFIO)
         {
             InitializeComponent();
+            TimeLock();
+            tbFIO.Text = userFIO;
+        }
+        public string TimeLock()
+        {
+            DateTime timeNow = DateTime.Now;
+            if (timeNow.Hour >= 10 && timeNow.Hour <= 12)
+            {
+                return tbTime.Text = "Доброе утро";
+            }
+            else if (timeNow.Hour > 11 && timeNow.Minute >= 1 && timeNow.Hour <= 17)
+            {
+                return tbTime.Text = "Добрый день";
+            }
+            else if (timeNow.Hour > 16 && timeNow.Minute >= 1 && timeNow.Hour <= 19)
+            {
+                return tbTime.Text = "Добрый вечер";
+            }
+            else
+            {
+                tbFIO.Visibility = Visibility.Collapsed;
+                return tbTime.Text = "Доступ заблокирован! Зайдите позже!";
+            }
         }
     }
 }

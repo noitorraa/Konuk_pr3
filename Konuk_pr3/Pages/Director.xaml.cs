@@ -48,5 +48,15 @@ namespace Konuk_pr3.Pages
                 return tbTime.Text = "Доступ заблокирован! Зайдите позже!";
             }
         }
+
+        private void butPrint_Click(object sender, RoutedEventArgs e)
+        {
+            PrintDialog pd = new PrintDialog();
+            if (pd.ShowDialog() == true)
+            {
+                IDocumentPaginatorSource idp = flowDoc;
+                pd.PrintDocument(idp.DocumentPaginator, Title);
+            }
+        }
     }
 }

@@ -24,13 +24,7 @@ namespace Konuk_pr3.Pages
         public Client()
         {
             InitializeComponent();
-            //User user = new User();
-            //Sotrudniki sotr = new Sotrudniki();
-            //sotr = ModelForProject.GetContext().Sotrudniki.Where(p => p.id_user == user.id_user).FirstOrDefault();
-            //string imea = sotr.Imia;
-            //string familia = sotr.Familia;
-            //string Otchestvo = sotr.Otchestvo;
-            //tbFIO.Text = imea+" "+familia+" "+Otchestvo;
+            
         }
     }
 }

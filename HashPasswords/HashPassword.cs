@@ -9,6 +9,11 @@ namespace HashPasswords
 {
     public class HashPassword
     {
+        /// <summary>
+        /// В этом методе реализуем хэширование пароля
+        /// </summary>
+        /// <param name="password"></param>
+        /// <returns></returns>
         public static string HashPassword1(string password)
         {
             using (SHA256 sha256hash = SHA256.Create())

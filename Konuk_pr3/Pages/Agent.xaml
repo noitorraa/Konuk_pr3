@@ -9,6 +9,7 @@
       Title="Agent">
 
     <Grid>
-        <TextBlock x:Name="tbFIO" HorizontalAlignment="Left" Margin="359,95,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
+        <TextBlock x:Name="tbFIO" HorizontalAlignment="Left" Margin="374,97,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
+        <TextBlock x:Name="tbTime" HorizontalAlignment="Left" Margin="374,61,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
     </Grid>
 </Page>
