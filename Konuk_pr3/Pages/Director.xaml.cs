@@ -49,14 +49,9 @@ namespace Konuk_pr3.Pages
             }
         }
 
-        private void butPrint_Click(object sender, RoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
-            PrintDialog pd = new PrintDialog();
-            if (pd.ShowDialog() == true)
-            {
-                IDocumentPaginatorSource idp = flowDoc;
-                pd.PrintDocument(idp.DocumentPaginator, Title);
-            }
+            NavigationService.Navigate(new ListSotrud());
         }
     }
 }

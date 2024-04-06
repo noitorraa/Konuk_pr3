@@ -41,6 +41,10 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Office.Interop.Word, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Office.Interop.Word.15.0.4797.1004\lib\net20\Microsoft.Office.Interop.Word.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
@@ -93,7 +97,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\ListSotrud.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\OfficeWorker.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\SotrudAdd.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -128,8 +140,14 @@
     <Compile Include="Pages\Director.xaml.cs">
       <DependentUpon>Director.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\ListSotrud.xaml.cs">
+      <DependentUpon>ListSotrud.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\OfficeWorker.xaml.cs">
       <DependentUpon>OfficeWorker.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\SotrudAdd.xaml.cs">
+      <DependentUpon>SotrudAdd.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Vahter.xaml.cs">
       <DependentUpon>Vahter.xaml</DependentUpon>
@@ -175,6 +193,9 @@
       <Project>{bd4e7b61-d114-427c-8ecb-701c97d39e41}</Project>
       <Name>HashPasswords</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\sotr.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

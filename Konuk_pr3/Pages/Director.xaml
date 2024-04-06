@@ -11,14 +11,6 @@
     <Grid>
         <TextBlock x:Name="tbFIO" HorizontalAlignment="Left" Margin="374,97,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
         <TextBlock x:Name="tbTime" HorizontalAlignment="Left" Margin="374,61,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
-
-        <FlowDocumentReader Grid.Row="0">
-            <FlowDocument Name="flowDoc">
-                <BlockUIContainer>
-                    <StackPanel HorizontalAlignment="Center"/>
-                </BlockUIContainer>
-            </FlowDocument>
-        </FlowDocumentReader>
-        <Button x:Name="butPrint" Content="Печать" HorizontalAlignment="Left" Margin="366,218,0,0" VerticalAlignment="Top" Width="75" Click="butPrint_Click"/>
+        <Button Content="Список сотрудников" Margin="318,208,0,0" VerticalAlignment="Top" Width="169" HorizontalAlignment="Left"  Background="#FFE66CB4" Click="Button_Click"/>
     </Grid>
 </Page>
