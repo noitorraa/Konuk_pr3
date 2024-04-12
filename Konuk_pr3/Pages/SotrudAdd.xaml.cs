@@ -34,7 +34,7 @@ namespace Konuk_pr3.Pages
 
             if (tbAdres.Text == string.Empty || tbFamilia.Text == string.Empty || tbImia.Text == string.Empty || tbLogin.Text == string.Empty || tbNomerTelefona.Text == string.Empty || tbOtchestvo.Text == string.Empty || tbparol.Text == string.Empty)
             {
-                MessageBox.Show("Заполните поля, чтобы создатьнового пользователя");
+                MessageBox.Show("Заполните поля, чтобы создать нового пользователя");
             }
             else
             {

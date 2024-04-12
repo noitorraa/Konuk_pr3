@@ -62,12 +62,16 @@
     <Compile Include="Model\Kandidati.cs" />
     <Compile Include="Model\Kontrakti.cs" />
     <Compile Include="Model\Model1.cs" />
+    <Compile Include="Model\MSreplication_options.cs" />
     <Compile Include="Model\Navik.cs" />
     <Compile Include="Model\NavikiKandidata.cs" />
     <Compile Include="Model\Otklik.cs" />
     <Compile Include="Model\Sobesedovanie.cs" />
     <Compile Include="Model\Sotrudniki.cs" />
-    <Compile Include="Model\sysdiagrams.cs" />
+    <Compile Include="Model\spt_fallback_db.cs" />
+    <Compile Include="Model\spt_fallback_dev.cs" />
+    <Compile Include="Model\spt_fallback_usg.cs" />
+    <Compile Include="Model\spt_monitor.cs" />
     <Compile Include="Model\User.cs" />
     <Compile Include="Model\Vakansii.cs" />
     <Compile Include="ProgramHelpers.cs" />

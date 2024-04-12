@@ -87,7 +87,6 @@
     <Compile Include="Model\Otklik.cs" />
     <Compile Include="Model\Sobesedovanie.cs" />
     <Compile Include="Model\Sotrudniki.cs" />
-    <Compile Include="Model\sysdiagrams.cs" />
     <Compile Include="Model\User.cs" />
     <Compile Include="Model\Vakansii.cs" />
     <Compile Include="Pages\Helper.cs" />
