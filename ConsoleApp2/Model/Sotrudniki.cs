@@ -17,7 +17,6 @@ namespace ConsoleApp2.Model
         }
 
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int ID_sotrudnika { get; set; }
 
         public int ID_dolzhnosti { get; set; }

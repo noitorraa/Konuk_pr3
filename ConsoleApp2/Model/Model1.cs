@@ -8,11 +8,11 @@ namespace ConsoleApp2.Model
     public partial class Model1 : DbContext
     {
         public Model1()
-            : base("name=Model12")
+            : base("name=Model1")
         {
         }
         public static Model1 model;
-        public static Model1 GetContext()
+        public static Model.Model1 GetContext()
         {
             if (model == null)
             {
@@ -20,7 +20,6 @@ namespace ConsoleApp2.Model
             }
             return model;
         }
-
         public virtual DbSet<Companii> Companii { get; set; }
         public virtual DbSet<Dolzhnosti> Dolzhnosti { get; set; }
         public virtual DbSet<Kandidati> Kandidati { get; set; }

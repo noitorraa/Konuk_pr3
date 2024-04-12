@@ -77,6 +77,20 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Model\Companii.cs" />
+    <Compile Include="Model\Dolzhnosti.cs" />
+    <Compile Include="Model\Kandidati.cs" />
+    <Compile Include="Model\Kontrakti.cs" />
+    <Compile Include="Model\Model1.cs" />
+    <Compile Include="Model\Navik.cs" />
+    <Compile Include="Model\NavikiKandidata.cs" />
+    <Compile Include="Model\Otklik.cs" />
+    <Compile Include="Model\Sobesedovanie.cs" />
+    <Compile Include="Model\Sotrudniki.cs" />
+    <Compile Include="Model\sysdiagrams.cs" />
+    <Compile Include="Model\User.cs" />
+    <Compile Include="Model\Vakansii.cs" />
+    <Compile Include="Pages\Helper.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -90,6 +104,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\Client.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\CurrentUser.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -115,19 +133,6 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Model\Companii.cs" />
-    <Compile Include="Model\Dolzhnosti.cs" />
-    <Compile Include="Model\Kandidati.cs" />
-    <Compile Include="Model\Kontrakti.cs" />
-    <Compile Include="Model\Model1.cs" />
-    <Compile Include="Model\Navik.cs" />
-    <Compile Include="Model\NavikiKandidata.cs" />
-    <Compile Include="Model\Otklik.cs" />
-    <Compile Include="Model\Sobesedovanie.cs" />
-    <Compile Include="Model\Sotrudniki.cs" />
-    <Compile Include="Model\sysdiagrams.cs" />
-    <Compile Include="Model\User.cs" />
-    <Compile Include="Model\Vakansii.cs" />
     <Compile Include="Pages\Agent.xaml.cs">
       <DependentUpon>Agent.xaml</DependentUpon>
     </Compile>
@@ -136,6 +141,9 @@
     </Compile>
     <Compile Include="Pages\Client.xaml.cs">
       <DependentUpon>Client.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\CurrentUser.xaml.cs">
+      <DependentUpon>CurrentUser.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Director.xaml.cs">
       <DependentUpon>Director.xaml</DependentUpon>
@@ -197,5 +205,6 @@
   <ItemGroup>
     <Resource Include="Resources\sotr.jpg" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
