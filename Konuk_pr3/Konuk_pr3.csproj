@@ -89,6 +89,9 @@
     <Compile Include="Model\Sotrudniki.cs" />
     <Compile Include="Model\User.cs" />
     <Compile Include="Model\Vakansii.cs" />
+    <Compile Include="Pages\ChangePass.xaml.cs">
+      <DependentUpon>ChangePass.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Helper.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -99,6 +102,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\Autho.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ChangePass.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -119,6 +126,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\OfficeWorker.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\RestorePassword.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -152,6 +163,9 @@
     </Compile>
     <Compile Include="Pages\OfficeWorker.xaml.cs">
       <DependentUpon>OfficeWorker.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\RestorePassword.xaml.cs">
+      <DependentUpon>RestorePassword.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\SotrudAdd.xaml.cs">
       <DependentUpon>SotrudAdd.xaml</DependentUpon>

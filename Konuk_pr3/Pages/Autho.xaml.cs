@@ -158,5 +158,10 @@ namespace Konuk_pr3.Pages
                     break;
             }
         }
+
+        private void tb_RestorePass_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            NavigationService.Navigate(new RestorePassword());
+        }
     }
 }
