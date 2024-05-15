@@ -36,8 +36,17 @@ namespace Konuk_pr3.Pages
             if (tb_Pass1.Text == tb_pass2.Text && tb_Pass1.Text != string.Empty && tb_pass2.Text != string.Empty)
             {
                 user.Parol = HashPassword.HashPassword1(tb_Pass1.Text);
-                Model1.GetContext().SaveChanges();
-                MessageBox.Show("Пароль изменен");
+                try
+                {
+                    Model1.GetContext().SaveChanges();
+                    MessageBox.Show("Пароль изменен");
+                    this.NavigationService.GoBack();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("При сохранении изменений возникла следующая ошибка "+ex);
+                }
+                
             }
         }
     }

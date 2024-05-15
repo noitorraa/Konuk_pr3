@@ -21,6 +21,7 @@ namespace Konuk_pr3.Pages
     /// </summary>
     public partial class Director : Page
     {
+        private bool InTime = true;
         public Director(string userFIO)
         {
             InitializeComponent();
@@ -32,18 +33,22 @@ namespace Konuk_pr3.Pages
             DateTime timeNow = DateTime.Now;
             if (timeNow.Hour >= 10 && timeNow.Hour <= 12)
             {
+                InTime = true;
                 return tbTime.Text = "Доброе утро";
             }
             else if (timeNow.Hour > 11 && timeNow.Minute >= 1 && timeNow.Hour <= 17)
             {
+                InTime = true;
                 return tbTime.Text = "Добрый день";
             }
             else if (timeNow.Hour > 16 && timeNow.Minute >= 1 && timeNow.Hour <= 19)
             {
+                InTime = true;
                 return tbTime.Text = "Добрый вечер";
             }
             else
             {
+                InTime = false;
                 tbFIO.Visibility = Visibility.Collapsed;
                 return tbTime.Text = "Доступ заблокирован! Зайдите позже!";
             }
@@ -51,7 +56,14 @@ namespace Konuk_pr3.Pages
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new ListSotrud());
+            //if (InTime)
+            //{
+                NavigationService.Navigate(new ListSotrud());
+            //}
+            //else
+            //{
+            //    MessageBox.Show("Рабочий день окончен, зайдите позже!");
+            //}
         }
     }
 }

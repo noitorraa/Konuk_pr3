@@ -28,7 +28,7 @@ namespace Konuk_pr3.Pages
         }
         private string mail;
         private int KOD;
-        private Sotrudniki sotr = new Sotrudniki();
+        //private Sotrudniki sotr = new Sotrudniki();
         User user = new User();
         private void btn_mail_Click(object sender, RoutedEventArgs e)
         {
@@ -36,20 +36,25 @@ namespace Konuk_pr3.Pages
             tb_sendKod.Visibility = Visibility.Visible;
             btn_Done.Visibility = Visibility.Visible;
             mail = tb_mail.Text;
-            Dellay();
+            
             SendMessage();
+            Dellay();
         }
         
         private async void Dellay()
         {
+            btn_mail.IsEnabled = false;
+            tb_mail.IsEnabled = false;
             for (int i = 60; i >= 0; i--)
             {   
                 btn_mail.Content = "Повторить отправку";  
-                btn_mail.IsEnabled = false;
+                
                 tb_mail.Text = String.Format("Повторить отправку через {0}", i);
                 await Task.Delay(1000);
-                btn_mail.IsEnabled = true;
+                
             }
+            tb_mail.IsEnabled = true;
+            btn_mail.IsEnabled = true;
             tb_mail.Clear();
         }
         private void SendMessage()

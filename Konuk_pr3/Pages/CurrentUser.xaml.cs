@@ -14,6 +14,12 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Konuk_pr3.Model;
 using HashPasswords;
+using ConsoleApp2.Model;
+using System.ComponentModel.DataAnnotations;
+using ValidationResult = System.ComponentModel.DataAnnotations.ValidationResult;
+using Model1 = Konuk_pr3.Model.Model1;
+using User = Konuk_pr3.Model.User;
+using Sotrudniki = Konuk_pr3.Model.Sotrudniki;
 
 namespace Konuk_pr3.Pages
 {
@@ -34,7 +40,6 @@ namespace Konuk_pr3.Pages
             tbImia.Text = sotr.Imea;
             tbFamilia.Text = sotr.Familia;
             tbAdres.Text = sotr.Adres;
-            //tbLogin.Text = sotr.User.Login;
             tbLogin.Text = user.Login;
             tbOtchestvo.Text = sotr.Otchestvo;
             tbNomerTelefona.Text = Convert.ToString(sotr.Telephon);
@@ -53,30 +58,28 @@ namespace Konuk_pr3.Pages
                 sotr.Otchestvo = tbOtchestvo.Text;
                 sotr.Adres = tbAdres.Text;
                 user.Login = tbLogin.Text;
-                int i;
-                bool res = int.TryParse(tbNomerTelefona.Text, out i);
-                if (res == true)
+                sotr.Telephon = tbNomerTelefona.Text;
+                Helper helper = new Helper();
+                var contextSotr = new ValidationContext(sotr);
+                var results = new List<ValidationResult>();
+                try
                 {
-                    sotr.Telephon = Convert.ToInt32(tbNomerTelefona.Text);
-                    Helper helper = new Helper();
-                    try
+                    if (!Validator.TryValidateObject(sotr, contextSotr, results, true))
                     {
-                        //helper.UpdateUsers(user); // Нужно сохранить изменения
+                        foreach (var error in results)
+                        {
+                            MessageBox.Show(error.ErrorMessage);
+                        }
+                    }
+                    else
+                    {
                         Model1.GetContext().SaveChanges();
                         MessageBox.Show("Изменения сохранены!");
                     }
-                    catch(Exception ex)
-                    {
-                        MessageBox.Show("Возеикла следующая ошибка " + ex);
-                    }
-                    //Model1.GetContext().User.Add(user);
-                    //Model1.GetContext().SaveChanges();
-                    //sotrudniki.id_user = user.ID_user;
-                    //Model1.GetContext().Sotrudniki.Add(sotrudniki);
-                    //Model1.GetContext().SaveChanges();
-                    //helper.UpdateSotr(sotrudniki);
-                    //MessageBox.Show("Успешно изменено");
-
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show("Возеикла следующая ошибка " + ex);
                 }
             }
         }

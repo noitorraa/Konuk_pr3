@@ -1,83 +1,137 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using Konuk_pr3.Model;
 using HashPasswords;
-using Konuk_pr3;
+using System.ComponentModel.DataAnnotations;
+using Sotrudniki = Konuk_pr3.Model.Sotrudniki;
+using ValidationResult = System.ComponentModel.DataAnnotations.ValidationResult;
+using User = Konuk_pr3.Model.User;
+using Model1 = Konuk_pr3.Model.Model1;
+using System.IO;
+using NPOI.XWPF.UserModel;
 
 namespace Konuk_pr3.Pages
 {
     /// <summary>
     /// Логика взаимодействия для SotrudList.xaml
     /// </summary>
-    public partial class SotrudList : Page
+    public partial class SotrudList : System.Windows.Controls.Page
     {
+        public Sotrudniki sotrudniki = new Sotrudniki();
+        private string Role;
         public SotrudList()
         {
             InitializeComponent();
-            
         }
 
         private void btSave_Click(object sender, RoutedEventArgs e)
         {
-
-            if (tbAdres.Text == string.Empty || tbFamilia.Text == string.Empty || tbImia.Text == string.Empty || tbLogin.Text == string.Empty || tbNomerTelefona.Text == string.Empty || tbOtchestvo.Text == string.Empty || tbparol.Text == string.Empty)
+            try
             {
-                MessageBox.Show("Заполните поля, чтобы создать нового пользователя");
-            }
-            else
-            {
-                Sotrudniki sotrudniki = new Sotrudniki();
                 User user = new User();
+                user.Login = tbLogin.Text;
+                user.Parol = HashPassword.HashPassword1(tbparol.Text);
+
                 sotrudniki.Imea = tbImia.Text;
                 sotrudniki.Familia = tbFamilia.Text;
                 sotrudniki.Otchestvo = tbOtchestvo.Text;
                 sotrudniki.Adres = tbAdres.Text;
-                user.Login = tbLogin.Text;
-                user.Parol = HashPassword.HashPassword1(tbparol.Text);
-                
-                int i;
-                bool res = int.TryParse(tbNomerTelefona.Text, out i);
-                if (res == true)
+                sotrudniki.Telephon = tbNomerTelefona.Text;
+
+                switch (cmbRol.Text)
                 {
-                    sotrudniki.Telephon = Convert.ToInt32(tbNomerTelefona.Text);
-                    switch (cmbRol.Text)
+                    case "Директор":
+                        sotrudniki.ID_dolzhnosti = 1;
+                        Role = "Директор";
+                        break;
+                    case "Офисный работник":
+                        sotrudniki.ID_dolzhnosti = 2;
+                        Role = "Офисный работник";
+                        break;
+                    case "Вахтер":
+                        sotrudniki.ID_dolzhnosti = 4;
+                        Role = "Вахтер";
+                        break;
+                    case "Агент":
+                        sotrudniki.ID_dolzhnosti = 3;
+                        Role = "Агент";
+                        break;
+                }
+
+                Helper helper = new Helper();
+
+                helper.CreateUsers(user);
+                
+                sotrudniki.id_user = user.ID_user;
+
+                var contextSotr = new ValidationContext(sotrudniki);
+                var results = new List<ValidationResult>();
+
+                if (!Validator.TryValidateObject(sotrudniki, contextSotr, results, true))
+                {
+                    foreach (var error in results)
                     {
-                        case "Директор":
-                            sotrudniki.ID_dolzhnosti = 1;
-                            break;
-                        case "Офисный работник":
-                            sotrudniki.ID_dolzhnosti = 2;
-                            break;
-                        case "Вахтер":
-                            sotrudniki.ID_dolzhnosti = 4;
-                            break;
-                        case "Агент":
-                            sotrudniki.ID_dolzhnosti = 3;
-                            break;
+                        MessageBox.Show(error.ErrorMessage);
                     }
-                    Helper helper = new Helper();
-                    helper.CreateUsers(user);
-                    sotrudniki.id_user = user.ID_user;
-                    helper.CreateSotr(sotrudniki);
-                    
-                    MessageBox.Show("Новый пользователь успешно создан!");
                 }
                 else
                 {
-                    MessageBox.Show("В номере телефона не может быть символов!");
-                    tbNomerTelefona.Clear();
+                    helper.CreateSotr(sotrudniki);
+                    MessageBox.Show("Новый пользователь успешно создан!");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ошибка при создании нового пользователя, возникла следующая ошибка " + ex);
+            }
+        }
+
+        private void btnPrintWordDoc(object sender, RoutedEventArgs e)
+        {
+            if (sotrudniki != null)
+            {
+                DateTime currentDate = DateTime.Today;
+                var items = new Dictionary<string, string>()
+                {
+                    {"<currentYear>", Convert.ToString(currentDate.Year)},
+                    {"<currentDay>", Convert.ToString(currentDate.Day)},
+                    {"<currentMounth>", Convert.ToString(currentDate.Month)},
+                    {"<SotrFio>", (sotrudniki.Familia+" "+sotrudniki.Imea+" "+sotrudniki.Otchestvo).ToString() },
+                    {"<Role>", Role.ToString()},
+                    {"<DayStart>", currentDate.Day.ToString() },
+                    {"<MounthStart>", currentDate.Month.ToString() },
+                    {"<YearStart>", currentDate.Year.ToString() },
+                    {"<Employee>", (sotrudniki.Familia+" "+sotrudniki.Imea+" "+sotrudniki.Otchestvo).ToString() },
+                    {"<currentDate>", currentDate.Date.ToString() }
+                };
+
+                string filePath = @"D:\Программирование\Konuk_pr3\Konuk_pr3\Document\blank-trudovogo-dogovora.docx";
+
+                using (FileStream fs = new FileStream(filePath, FileMode.Open, FileAccess.Read))
+                {
+                    XWPFDocument doc = new XWPFDocument(fs);
+
+                    foreach (var item in items)
+                    {
+                        foreach (var paragraph in doc.Paragraphs)
+                        {
+                            foreach (var run in paragraph.Runs)
+                            {
+                                if (run.Text.Contains(item.Key))
+                                {
+                                    run.SetText(run.Text.Replace(item.Key, item.Value), 0);
+                                }
+                            }
+                        }
+                    }
+
+                    string newFilePath = @"C:\Users\User\Desktop\myDoc.docx";
+                    using (FileStream fs2 = new FileStream(newFilePath, FileMode.Create, FileAccess.Write))
+                    {
+                        doc.Write(fs2);
+                        MessageBox.Show("Документ сохранен!");
+                    }
+
                 }
             }
         }

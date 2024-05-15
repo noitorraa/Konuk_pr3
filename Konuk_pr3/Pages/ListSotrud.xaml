@@ -37,23 +37,31 @@
 
         </Grid.ColumnDefinitions>
         <TextBox Grid.Row="0" Name="txt_filter"/>
-        <Button Grid.Column="5" Grid.Row="0" Content="Добавить" Click="AddButton" HorizontalAlignment="Center" VerticalAlignment="Top" Height="43" Width="190" Background="#FFE66CB4"/>
+        <Button Grid.Column="5" Grid.Row="0" Content="Добавить" Click="AddButton" HorizontalAlignment="Center" VerticalAlignment="Top" Height="43" Width="120" Background="#FFE66CB4" Margin="0,10,0,0"/>
         <Button x:Name="btn_sort" Click="btn_sort_Click" Grid.Column="3" Content="Сортировать" Background="#FFE66CB4"/>
         <Button x:Name="btn_clear" Click="btn_clear_Click" Grid.Column="4" Content="Очистить" Background="#FFE66CB4"/>
-        <ComboBox Grid.Row="0" Grid.Column="1" Name="cmb_filter" Grid.ColumnSpan="2">
+        <Button x:Name="Print_btn" Content="Print" Grid.Column="2" Background="#FFE66CB4" Click="Print_btn_Click"/>
+        <ComboBox Grid.Row="0" Grid.Column="1" Name="cmb_filter" Grid.ColumnSpan="1">
             <ComboBoxItem Content="По возрастанию"/>
 
             <ComboBoxItem Content="По убыванию"/>
         </ComboBox>
-        <ListView x:Name="LbSpisok" Grid.Row="1" Grid.ColumnSpan="5"
-                 ItemTemplate="{StaticResource listTemplate}"
-                 ItemsPanel="{StaticResource listPanelTemplate}"
-                 ScrollViewer.HorizontalScrollBarVisibility="Disabled" >
-            <ListView.ItemContainerStyle>
-                <Style TargetType="ListBoxItem">
-                    <EventSetter Event="MouseDoubleClick" Handler="ListViewItem_MouseDoubleClick"/>
-                </Style>
-            </ListView.ItemContainerStyle>
-        </ListView>
+        <FlowDocumentReader Grid.Column="0" Grid.Row ="1" Grid.ColumnSpan="5">
+            <FlowDocument Name="flowdoc">
+                <BlockUIContainer>
+                    <ListView x:Name="LbSpisok" Grid.Row="1" Grid.ColumnSpan="5"
+                    ItemTemplate="{StaticResource listTemplate}"
+                    ItemsPanel="{StaticResource listPanelTemplate}"
+                    ScrollViewer.HorizontalScrollBarVisibility="Disabled" >
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="ListBoxItem">
+                                <EventSetter Event="MouseDoubleClick" Handler="ListViewItem_MouseDoubleClick"/>
+                            </Style>
+                        </ListView.ItemContainerStyle>
+                    </ListView>
+                </BlockUIContainer>
+            </FlowDocument>
+        </FlowDocumentReader>
+        <Button Grid.Column="5" Grid.Row="1" Content="create xsl" Click="Button_Click" HorizontalAlignment="Center" VerticalAlignment="Top" Height="43" Width="120" Background="#FFE66CB4" Margin="0,10,0,0" FontSize="12"/>
     </Grid>
 </Page>

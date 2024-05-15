@@ -29,6 +29,7 @@ namespace Konuk_pr3.Model
         public virtual DbSet<Otklik> Otklik { get; set; }
         public virtual DbSet<Sobesedovanie> Sobesedovanie { get; set; }
         public virtual DbSet<Sotrudniki> Sotrudniki { get; set; }
+        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<User> User { get; set; }
         public virtual DbSet<Vakansii> Vakansii { get; set; }
 
@@ -81,10 +82,6 @@ namespace Konuk_pr3.Model
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Sotrudniki>()
-                .Property(e => e.Telephon)
-                .HasPrecision(18, 0);
-
-            modelBuilder.Entity<Sotrudniki>()
                 .HasMany(e => e.Kontrakti)
                 .WithRequired(e => e.Sotrudniki)
                 .WillCascadeOnDelete(false);
@@ -92,6 +89,11 @@ namespace Konuk_pr3.Model
             modelBuilder.Entity<Sotrudniki>()
                 .HasMany(e => e.Sobesedovanie)
                 .WithRequired(e => e.Sotrudniki)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<User>()
+                .HasMany(e => e.Sotrudniki)
+                .WithRequired(e => e.User)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Vakansii>()

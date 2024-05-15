@@ -14,6 +14,13 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Konuk_pr3.Model;
 using ConsoleApp2;
+using System.IO;
+using System.Windows.Markup;
+using System.Diagnostics;
+using NPOI.SS.UserModel;
+using NPOI.XSSF.UserModel;
+using System.Data;
+using System.Data.SqlClient;
 
 namespace Konuk_pr3.Pages
 {
@@ -41,8 +48,7 @@ namespace Konuk_pr3.Pages
             }
             if (cmb_filter.Text == "По убыванию")
             {
-               sotrudniki.OrderByDescending(t => t.Imea);
-               sotrudniki.Reverse();
+               sotrudniki.OrderBy(t => t.Imea);
             }
             LbSpisok.ItemsSource = sotrudniki;
         }
@@ -67,5 +73,46 @@ namespace Konuk_pr3.Pages
             this.NavigationService.Navigate(currentUser);
         }
 
+        private void Print_btn_Click(object sender, RoutedEventArgs e)
+        {
+
+            PrintDialog pd = new PrintDialog();
+            if (pd.ShowDialog() == true)
+            {
+                IDocumentPaginatorSource idp = flowdoc;
+                pd.PrintDocument(idp.DocumentPaginator, Title);
+            }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+                using (Model1 context = new Model1())
+                {
+                    List<Sotrudniki> sotrudnikis = context.Sotrudniki.ToList();
+    
+                    XSSFWorkbook workbook = new XSSFWorkbook();
+                    ISheet sheet = workbook.CreateSheet("Sotrudniki");
+    
+                    int i = 0;
+                    foreach (var sotrudniki in sotrudnikis)
+                        {
+                            IRow row = sheet.CreateRow(i);
+
+                            row.CreateCell(0).SetCellValue(sotrudniki.ID_sotrudnika.ToString());
+                            row.CreateCell(1).SetCellValue(sotrudniki.Imea);
+                            row.CreateCell(2).SetCellValue(sotrudniki.Familia);
+                            row.CreateCell(5).SetCellValue(sotrudniki.Otchestvo);
+                            row.CreateCell(3).SetCellValue(sotrudniki.Adres);
+                            row.CreateCell(4).SetCellValue(sotrudniki.Telephon);
+        
+                            i++;
+                        }
+                    using (FileStream file = new FileStream(@"C:\Users\User\Desktop\myXSL.xlsx", FileMode.Create))
+                        {
+                            workbook.Write(file);
+                            MessageBox.Show("Файл создан!");
+                        }
+                }
+        }
     }
 }
