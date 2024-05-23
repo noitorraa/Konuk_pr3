@@ -47,12 +47,6 @@ namespace Konuk_pr3.Pages
 
         private void btSave_Click(object sender, RoutedEventArgs e)
         {
-            if (tbAdres.Text == string.Empty || tbFamilia.Text == string.Empty || tbImia.Text == string.Empty || tbLogin.Text == string.Empty || tbNomerTelefona.Text == string.Empty || tbOtchestvo.Text == string.Empty)
-            {
-                MessageBox.Show("Заполните поля, чтобы изменить данные");
-            }
-            else
-            {
                 sotr.Imea = tbImia.Text;
                 sotr.Familia = tbFamilia.Text;
                 sotr.Otchestvo = tbOtchestvo.Text;
@@ -79,9 +73,9 @@ namespace Konuk_pr3.Pages
                 }
                 catch(Exception ex)
                 {
-                    MessageBox.Show("Возеикла следующая ошибка " + ex);
+                    MessageBox.Show("Возникла следующая ошибка " + ex);
                 }
-            }
+            
         }
     }
 }

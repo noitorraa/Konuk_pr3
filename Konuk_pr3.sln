@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HashPasswords", "HashPasswo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp2", "ConsoleApp2\ConsoleApp2.csproj", "{23A30318-0010-48E7-BF90-2337D90AD48E}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "API", "API\API.csproj", "{B46EC780-A003-4CDA-9691-BD85A58D3430}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{7D234876-7DAB-4DC3-A6AE-35A0C52B16CB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{23A30318-0010-48E7-BF90-2337D90AD48E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{23A30318-0010-48E7-BF90-2337D90AD48E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{23A30318-0010-48E7-BF90-2337D90AD48E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B46EC780-A003-4CDA-9691-BD85A58D3430}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B46EC780-A003-4CDA-9691-BD85A58D3430}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B46EC780-A003-4CDA-9691-BD85A58D3430}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B46EC780-A003-4CDA-9691-BD85A58D3430}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D234876-7DAB-4DC3-A6AE-35A0C52B16CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D234876-7DAB-4DC3-A6AE-35A0C52B16CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D234876-7DAB-4DC3-A6AE-35A0C52B16CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D234876-7DAB-4DC3-A6AE-35A0C52B16CB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

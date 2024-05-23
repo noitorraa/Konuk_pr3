@@ -120,7 +120,7 @@ namespace Konuk_pr3.Pages
         /// </summary>
         /// <param name="Length"></param>
         /// <returns></returns>
-        private string GanerateCapcha(int Length)
+        public string GanerateCapcha(int Length) // was private
         {
             string chars = "QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm0123456789!@#$%^&*_";//Пишем символы с клавиатуры, которые будем использовать 
             Random rnd = new Random();

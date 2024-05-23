@@ -75,7 +75,6 @@ namespace Konuk_pr3.Pages
 
         private void Print_btn_Click(object sender, RoutedEventArgs e)
         {
-
             PrintDialog pd = new PrintDialog();
             if (pd.ShowDialog() == true)
             {
